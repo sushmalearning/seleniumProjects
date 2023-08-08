@@ -1,0 +1,107 @@
+package com.automation.omayo;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
+
+public class Omayo {
+
+	public static void main(String[] args) throws Exception {
+
+		// Add arguments
+		ChromeOptions option = new ChromeOptions();
+		option.addArguments("--remote-allow-origins=*");
+
+		// Set Browser
+		System.setProperty("webdriver.chrome.driver",
+				"C:\\Users\\sushma.guttedar\\Downloads\\chromedriver-win64_latest\\chromedriver.exe");
+		ChromeDriver driver = new ChromeDriver();
+
+		// Get URL
+		driver.get("http://omayo.blogspot.com/");
+
+		// maximize browser
+		driver.manage().window().maximize();
+
+		// delete all cookies
+		driver.manage().deleteAllCookies();
+		
+		//Blogs
+		driver.findElement(By.xpath("//*[@id=\"blogsmenu\"]")).click();
+		
+		Thread.sleep(2000);
+		
+		//Link
+		driver.findElement(By.xpath("//*[@id=\"link1\"]")).click();
+		
+		Thread.sleep(2000);
+		
+		//MultiSelection Blog
+		driver.findElement(By.xpath("//*[@id=\"multiselect\"]/option[2]")).click();
+		
+		Thread.sleep(2000);
+		
+	
+		//Selenium143
+		driver.findElement(By.id("link2")).click();
+		Thread.sleep(2000);
+		driver.navigate().back();
+		
+		//selenium143 -2
+		driver.findElement(By.xpath("//*[@=id\"link2\"]")).click();
+		Thread.sleep(2000);
+		driver.navigate().back();
+		
+		//Text box with preloaded text
+		System.out.println(driver.findElement(By.xpath("//*[@id=\"textbox1\"]")).getText());
+		
+		//Open in new window link 
+		driver.findElement(By.xpath("/html/body/div[4]/div[2]/div[2]/div[2]/div[2]/div[2]/div[2]/div/div[4]/div/"));
+		Thread.sleep(2000);
+		
+		String MainWindow = driver.getWindowHandle();
+		Thread.sleep(2000);
+		
+		//Username 
+		driver.findElement(By.xpath("//*[@id=\"HTML42\"]/div[1]/form/input[1]")).sendKeys("Suchi");
+		Thread.sleep(2000);
+		driver.findElement(By.xpath("//*[@id=\"HTML42\"]/div[1]/form/input[2]")).sendKeys("Suchi@123");
+		Thread.sleep(2000);
+		driver.findElement(By.xpath("//*[@id=\"HTML42\"]/div[1]/form/input[3]")).click();
+		Thread.sleep(2000);
+		driver.switchTo().alert().accept();
+		
+		//Search this Blog
+		driver.findElement(By.xpath("//*[@id=\"BlogSearch1_form\"]/form/table/tbody/tr/td[1]/input")).sendKeys("Books");
+		Thread.sleep(2000);
+		driver.findElement(By.xpath("//*[@id=\"BlogSearch1_form\"]/form/table/tbody/tr/td[2]/input")).click();
+		Thread.sleep(2000);
+		
+		//Radio Button(male or female)
+		driver.findElement(By.xpath("//*[@id=radio1\"]")).click();
+		Thread.sleep(2000);
+		
+		//Alert demo
+		driver.findElement(By.xpath("//*[@id=\"alert1\"]")).click();
+		Thread.sleep(2000);
+		driver.switchTo().alert().accept();
+		
+		//uncheck box
+		driver.findElement(By.xpath("//*[@id=\"checkbox1\"]")).click();
+		Thread.sleep(2000);
+		
+		//check box 
+		driver.findElement(By.xpath("//*[@id=\"checkbox1\"]")).click();
+		Thread.sleep(2000);
+		
+		//alert message 
+		driver.switchTo().alert().sendKeys("Suchi");
+		Thread.sleep(2000);
+		
+		//Blogger 
+		driver.findElement(By.xpath("//*[@id=\"Ättribution1\"]/div[1]/a")).click();
+		Thread.sleep(2000);
+		
+		driver.close();
+		
+	}
